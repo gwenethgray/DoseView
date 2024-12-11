@@ -25,7 +25,7 @@ root.minsize(750,450)
 
 filename = tk.StringVar(root)
 e1 = Entry(root, textvariable=filename)
-e1.grid(row=1, column=0, sticky=W, pady=2)
+e1.grid(row=0, column=1, columnspan=2)
 e1.config(state="readonly")
 
 def browse():
@@ -33,12 +33,12 @@ def browse():
     filename.set(f)
 
 b1 = Button(root, text="Select Dose File", command=browse)
-b1.grid(row=0, column=0, sticky=W, pady=2)
+b1.grid(row=0, column=0)
 
 fig = Figure(figsize=(8,6), dpi=100)
 ax = fig.add_subplot(111)
 canvas = FigureCanvasTkAgg(fig, master=root)
-canvas.get_tk_widget().grid(row=0, column=1, columnspan=3, rowspan=3, padx=5, pady=5)
+canvas.get_tk_widget().grid(row=1, column=1, columnspan=2)
 canvas.draw()
 
 slices, rows, cols = [0, 0, 0]
@@ -68,6 +68,6 @@ def plot_dcm():
     canvas.draw()
     
 b2 = Button(root, text="Plot", command=plot_dcm)
-b2.grid(row=2, column=0, sticky=W, pady=2)
+b2.grid(row=1, column=0)
 
 root.mainloop()
